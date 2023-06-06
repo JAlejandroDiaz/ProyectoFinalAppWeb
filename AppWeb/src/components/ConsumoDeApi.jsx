@@ -8,26 +8,6 @@ export default class ConsumoDeApi extends Component {
     buscar: "",
   };
 
-  /*componentDidMount() {
-    let url = "https://api.mercadolibre.com/sites/MLA/search?q=samsung";
-    fetch(url)
-      .then(res => res.json())
-      .then(json => {
-        //console.log(json);
-        json.results.forEach((el) => {
-          let producto = {
-            price: el.price,
-            name: el.title,
-            image: el.thumbnai,
-            currency_id: el.currency_id,
-            id: el.id,
-          };
-          let productos = [...this.state.productos, producto];
-          this.setState({ productos : productos });
-          console.log(this.state.productos)
-        });
-      });
-  }*/
   consumir = () => {
     console.log(this.state.buscar);
     //console.log(bus);
