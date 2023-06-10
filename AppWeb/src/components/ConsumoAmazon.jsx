@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export const ConsumoAmazon = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
 
   
@@ -24,10 +24,14 @@ export const ConsumoAmazon = () => {
 
     const fetchData = async () => {
       try {
-        console.log(search);
+       
         const response = await axios.request(options);
-        //setData(response.data);
+        setData(response.data.products.name)
         console.log(response.data);
+       /* fetch(response.data).then((res)=>res.json())
+        .then((json)=>{
+            console.log(json)
+        })*/
       } catch (error) {
         console.error(error);
       }
@@ -37,6 +41,13 @@ export const ConsumoAmazon = () => {
 
   return (
     <div>
+        <div>
+      {data ? (
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      ) : (
+        <p>Cargando datos...</p>
+      )}
+    </div>
       <form>
         <div className="input-group">
           <input
@@ -50,6 +61,7 @@ export const ConsumoAmazon = () => {
           <div className="input-group-append">
             <button className="btn btn-primary">Buscar</button>
           </div>
+         
         </div>
       </form>
     </div>
