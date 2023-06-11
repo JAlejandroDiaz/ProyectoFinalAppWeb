@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useFetcher } from "react-router-dom";
+import {EquipoCard} from '../components/EquipoCard'
 
 export const Home = () => {
   const API_URL = "https://api.themoviedb.org/3";
@@ -25,7 +26,7 @@ export const Home = () => {
         query: buscarkey,
       },
     });
-
+    console.log(results)
     setmovies(results);
     setmovie(results[0]);
   };
@@ -42,12 +43,14 @@ export const Home = () => {
           {movies.map((movie) => {
             return (
               <div className="col-md-4 mb-3" key={movie.id}>
-                <h1>{movie.original_title}</h1>
+                {/* <h1>{movie.original_title}</h1>
                 <img
                   src={`${URL_IMAGEN + movie.poster_path}` }
                   height={600} width={400}
                   alt="Imagen no encontrado"
-                />
+                  
+                /> */}
+                <EquipoCard key={movie.id} {...movie}/>
               </div>
             );
           })}
