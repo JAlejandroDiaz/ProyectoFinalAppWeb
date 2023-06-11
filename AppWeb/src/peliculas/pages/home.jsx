@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useFetcher } from "react-router-dom";
 import {EquipoCard} from '../components/EquipoCard'
 
 export const Home = () => {
@@ -42,7 +41,7 @@ export const Home = () => {
         <div className="row">
           {movies.map((movie) => {
             return (
-              <div className="col-md-4 mb-3" key={movie.id}>
+              <div className="col-md-3 mb-3 mx-auto" key={movie.id}>
                 {/* <h1>{movie.original_title}</h1>
                 <img
                   src={`${URL_IMAGEN + movie.poster_path}` }
