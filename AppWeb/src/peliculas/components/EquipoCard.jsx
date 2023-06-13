@@ -12,8 +12,7 @@ export const EquipoCard = ({
   const URL_IMAGEN = "https://image.tmdb.org/t/p/original";
   return (
     <>
-    <div className="row">
-    <div className="col s12 m6">
+  
       <div className="card">
         <div className="card-image">
           <img src={`${URL_IMAGEN +poster_path}` } />
@@ -25,8 +24,7 @@ export const EquipoCard = ({
           <p>{release_date}</p>
         </div>
       </div>
-    </div>
-  </div>
+    
    
     </>
   

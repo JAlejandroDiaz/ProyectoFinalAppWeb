@@ -44,7 +44,7 @@ export const Home = () => {
     
       {/* <button onClick={fetchMovies}>Presione</button>    */}
 
-      <div className="container mt-3">
+      <div className="container mt-3 mx-auto">
         <div className="row">
           {movies.map((movie) => {
             return (
