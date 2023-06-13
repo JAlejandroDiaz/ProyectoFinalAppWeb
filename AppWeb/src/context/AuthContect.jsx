@@ -1,3 +1,4 @@
+import React, {useEffect, useState} from 'react'
 import {auth} from '../firebase/firebase.confing'
 import { createContext, useContext } from 'react'
 import { createUserWithEmailAndPassword, 
@@ -5,7 +6,7 @@ import { createUserWithEmailAndPassword,
     GoogleAuthProvider, 
     signInWithPopup,
     signOut,
-
+    onAuthStateChanged
 } from 'firebase/auth'
 
 
@@ -21,13 +22,26 @@ export const useAuth= () => {
     }
     
     export function AuthProvider({children}){
+        const [user, setUser] = useState("")
+        useEffect(()=>{
+            const suscribed = onAuthStateChanged(auth, (currentUser)=>{
+                if(!currentUser){
+                    console.log("no hay usuario suscrito")
+                    setUser("")
+                }else{
+                   setUser(currentUser) 
+                }
+            })
+            return () => suscribed()
+        },[])
+
         const register = async(email,password) =>{
           const response= await createUserWithEmailAndPassword(auth,email,password)
           console.log(response)
         }
         const login = async (email, password) =>{
             const response= await signInWithEmailAndPassword(auth,email,password)
-            console.log(response)
+            console.log(response+"login")
         }
 
         const loginWithGoogle = async()=>{
@@ -47,7 +61,8 @@ export const useAuth= () => {
                 register,
                 login,
                 loginWithGoogle,
-                logout
+                logout,
+                user
             }}
             >
                 {children}

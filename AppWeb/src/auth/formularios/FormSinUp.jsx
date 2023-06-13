@@ -21,7 +21,7 @@ export const FormSinUp = () => {
                 <input onChange={(e) => setPasswordRegister(e.target.value)}
                     type="password"
                     className="input" />
-                <button onClick={(e) => handleRegister(e)} className="button">Submit</button>
+                <button onClick={(e) => handleRegister(e)} className="button">Crear cuenta</button>
             </form>
         </div>
     )
