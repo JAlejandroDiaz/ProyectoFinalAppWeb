@@ -12,15 +12,15 @@ export const EquipoCard = ({
   const URL_IMAGEN = "https://image.tmdb.org/t/p/original";
   return (
     <>
-    <div class="row">
-    <div class="col s12 m6">
-      <div class="card">
-        <div class="card-image">
+    <div className="row">
+    <div className="col s12 m6">
+      <div className="card">
+        <div className="card-image">
           <img src={`${URL_IMAGEN +poster_path}` } />
-          <span class="card-title">{original_title}</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">{vote_average}</i></a>
+          <span className="card-title">{original_title}</span>
+          <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">{vote_average}</i></a>
         </div>
-        <div class="card-content">
+        <div className="card-content">
           <p>{popularity}</p>
           <p>{release_date}</p>
         </div>

@@ -26,9 +26,13 @@ export const useAuth= () => {
         useEffect(()=>{
             const suscribed = onAuthStateChanged(auth, (currentUser)=>{
                 if(!currentUser){
+                    console.log(currentUser)
                     console.log("no hay usuario suscrito")
                     setUser("")
                 }else{
+                    console.log(currentUser)
+                    console.log("estoy registrado")
+
                    setUser(currentUser) 
                 }
             })
@@ -46,7 +50,10 @@ export const useAuth= () => {
 
         const loginWithGoogle = async()=>{
              const responseGoogle= new GoogleAuthProvider()
+            console.log(auth)
+
              return signInWithPopup(auth, responseGoogle)
+             
         }
 
         const logout = async() =>{

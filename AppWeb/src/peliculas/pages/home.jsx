@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {EquipoCard} from '../components/EquipoCard'
+import { useAuth } from "../../context/AuthContect";
 
 export const Home = () => {
   const API_URL = "https://api.themoviedb.org/3";
@@ -13,6 +14,7 @@ export const Home = () => {
     tittle: "loadingMovie",
   });
   const [playing, setplaying] = useState(false);
+  const auth = useAuth()
 
   //conexion
   const fetchMovies = async (buscarkey) => {
@@ -29,12 +31,17 @@ export const Home = () => {
     setmovies(results);
     setmovie(results[0]);
   };
+  const handleLogout =() =>{
+    auth.logout()}
 
   useEffect(() => {
     fetchMovies();
   }, []);
   return (
     <>
+  
+<button onClick={() => handleLogout()} className="button">Cerrar sesion</button>
+    
       {/* <button onClick={fetchMovies}>Presione</button>    */}
 
       <div className="container mt-3">

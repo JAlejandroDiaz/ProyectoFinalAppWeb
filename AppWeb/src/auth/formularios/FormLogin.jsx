@@ -1,17 +1,23 @@
-import { useState } from "react"
-import { useAuth } from "../../context/AuthContect"
+import { useState, useContext } from "react"
+import { useAuth, authContext } from "../../context/AuthContect"
+import { useNavigate } from "react-router-dom";
 
 
 
 export const FormLogin = () => {
-
+ const { user } = useContext(authContext);
+ const navigate = useNavigate()
     const auth = useAuth()
+    
+    const login = () =>{
+        navigate("/Home")
+    }
 
         if(!auth.email){
-            console.log("no hay nada")
+           // console.log("no hay nada")
         } 
         else{
-            console.log("si hay algo")
+           // console.log("si hay algo")
         }
 
 
@@ -20,7 +26,7 @@ export const FormLogin = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    // console.log(email, password, "FromLogin")
+    console.log(email, password, "FromLogin")
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -30,6 +36,9 @@ export const FormLogin = () => {
     const handleGoogle =(e) =>{
         e.preventDefault()
         auth.loginWithGoogle()
+        user();
+        login();
+
     }
 
     const handleLogout =() =>{
