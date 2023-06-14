@@ -2,19 +2,21 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {EquipoCard} from '../components/EquipoCard'
 import { BuscarIndividual } from "../helpers/BuscarIndividual";
+import { Navbar } from "../../ui/components/Navbar";
 
 
-export const Home = ({busqueda}) => {
-  console.log(busqueda)
+export const Home = () => {
+
   // const API_URL = "https://api.themoviedb.org/3";
   // const API_KEY = "8bac5a6f224724e60995c6b33cf11019";
   // const Imagen_path = "https://image.tmdb.org/t/p/original";
   // const URL_IMAGEN = "https://image.tmdb.org/t/p/original";
   const [movies, setmovies] = useState([]);
-  const [buscarP, setbuscarP] = useState(busqueda);
+  const [buscarP, setbuscarP] = useState();
   const [movie, setmovie] = useState({
     tittle: "loadingMovie",
   });
+  
   // const [playing, setplaying] = useState(false);
   
 
@@ -33,24 +35,18 @@ export const Home = ({busqueda}) => {
   //   setmovies(results);
   //   setmovie(results[0]);
   // };
+  
+   
 
-
-  useEffect(() => {
-
+  useEffect(()=>{
+    console.log(buscarP)
     BuscarIndividual(setmovies, setmovie, buscarP)
   }, [buscarP]);
   return (
     <>
-  
-
-
-
-
-
-    
       {/* <button onClick={fetchMovies}>Presione</button>    */}
-
-      <div className="container mt-3 mx-auto">
+       {<Navbar setbuscarP={setbuscarP}/>}
+      <div className="container mt-3 ">
         <div className="row">
           {movies.map((movie) => {
             return (

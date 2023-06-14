@@ -2,13 +2,15 @@ import { useState } from "react";
 import { useAuth } from "../../context/AuthContect";
 import { Home } from "../../peliculas/pages/home";
 
-export const Navbar = () => {
+export const Navbar = ({setbuscarP}) => {
 
   const buscar= () =>{
-    <Home busqueda={pB}/>
-
+    console.log(pB)
+    setbuscarP(pB)
   }
   const [pB, setPB]= useState("") 
+
+  
 
     const auth = useAuth()
     const handleLogout =() =>{
@@ -34,8 +36,8 @@ export const Navbar = () => {
           </li>
         </ul>
         <form className="d-flex" role="search">
-          <input onChange={val=>{
-            setPB(val.target.value)
+          <input onChange={(val)=>{
+            setPB(val.target.value) 
           }} 
           className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
           
@@ -46,6 +48,7 @@ export const Navbar = () => {
         <button onClick={() => handleLogout()} className="btn btn-outline-success">Cerrar sesion</button>
 
       </div>
+     
     </div>
   </nav>
   

@@ -12,7 +12,7 @@ export function BuscarIndividual(setmovies, setmovie, buscarP){
   // const [buscarkey, setbuscarkey] = useState("");
   // const [playing, setplaying] = useState(false);
   
-  
+  console.log(buscarP)
   //conexion
   const fetchMovies = async (buscarkey) => {
     console.log(buscarkey)
@@ -30,10 +30,10 @@ export function BuscarIndividual(setmovies, setmovie, buscarP){
     setmovie(results[0]);
   };
 
-  if(!buscarP){
+  if(buscarP !== undefined){
     fetchMovies(buscarP) 
   }else{
-    fetchMovies("") 
+    fetchMovies() 
   }
 
 

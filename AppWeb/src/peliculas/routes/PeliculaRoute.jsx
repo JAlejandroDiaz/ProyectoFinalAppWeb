@@ -8,9 +8,9 @@ export const PeliculaRoute = () => {
  
   return (
     <>
-     <Navbar/> 
+       {/* <Navbar />    */}
     <Routes>
-        <Route path='Home' element={<Home/>}/>
+        <Route path='Home' element={<Home />}/>
         <Route path='/*' element={<Navigate to="Home"/>}/>
         <Route/>
     </Routes>
