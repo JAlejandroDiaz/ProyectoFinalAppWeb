@@ -16,7 +16,7 @@ export const EquipoCard = ({
       <div className="card">
         <div className="card-image">
           <img src={`${URL_IMAGEN +poster_path}` } />
-          <span className="card-title">{original_title}</span>
+          <span className="card-content">{original_title}</span>
           <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">{vote_average}</i></a>
         </div>
         <div className="card-content">
@@ -24,11 +24,6 @@ export const EquipoCard = ({
           <p>{release_date}</p>
         </div>
       </div>
-    
-   
     </>
-  
-    
- 
   )
 }

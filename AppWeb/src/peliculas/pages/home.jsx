@@ -50,16 +50,15 @@ export const Home = () => {
         <div className="row">
           {movies.map((movie) => {
             return (
-              <div className="col-md-3 mb-3 mx-auto" key={movie.id}>
-                {/* <h1>{movie.original_title}</h1>
-                <img
-                  src={`${URL_IMAGEN + movie.poster_path}` }
-                  height={600} width={400}
-                  alt="Imagen no encontrado"
-                  
-                /> */}
-                <EquipoCard key={movie.id} {...movie}/>
-              </div>
+          <>
+           {       movie.poster_path?  <div className="col-md-3 mb-3 mx-auto" key={movie.id}>
+                  <EquipoCard key={movie.id} {...movie}/>
+                  </div>:undefined
+                }
+ 
+          </>
+               
+              
             );
           })}
         </div>

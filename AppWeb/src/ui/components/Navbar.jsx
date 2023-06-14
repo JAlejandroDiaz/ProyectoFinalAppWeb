@@ -35,15 +35,14 @@ export const Navbar = ({setbuscarP}) => {
             <a className="nav-link disabled">Disabled</a>
           </li>
         </ul>
-        <form className="d-flex" role="search">
-          <input onChange={(val)=>{
+        <div className="d-flex" >
+        <input onChange={(val)=>{
             setPB(val.target.value) 
           }} 
           className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          
-        </form>
-        {/* Cambiado por anderson */}
-        <button className="btn btn-outline-success mx-2" type="submit"  onClick={buscar} >Search</button>
+        <button className="btn btn-outline-success mx-2"  onClick={buscar} >Search</button>
+        </div>
+        
 
         <button onClick={() => handleLogout()} className="btn btn-outline-success">Cerrar sesion</button>
 
