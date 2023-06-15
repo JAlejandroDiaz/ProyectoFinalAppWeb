@@ -4,6 +4,7 @@ import { Navbar } from "../../ui/components/Navbar";
 import {} from 'module';
 import "../styles/styles.css";
 import { useEffect, useState } from "react";
+import { Footer } from "../../ui/components/Footer";
 
 export const PeliculaRoute = () => {
 const [buscarPeli, setbuscarPelicula] = useState()
@@ -17,6 +18,7 @@ const [buscarPeli, setbuscarPelicula] = useState()
         <Route path="Movie/:movieId" element={<PagePelicula/>}/>
         <Route />
       </Routes>
+      <Footer/>
     </>
   );
 };
