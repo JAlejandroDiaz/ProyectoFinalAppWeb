@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../auth/context/AuthContect";
 import { Home } from "../../peliculas/pages/home";
-
+import { Link } from "react-router-dom"
 export const Navbar = ({setbuscarP}) => {
 
   const buscar= () =>{
@@ -26,7 +26,7 @@ export const Navbar = ({setbuscarP}) => {
         <a className="navbar-brand" href="#">Hidden brand</a>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">Home</a>
+            <Link className="nav-link active" aria-current="page" to="/Home">Home</Link>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">Link</a>

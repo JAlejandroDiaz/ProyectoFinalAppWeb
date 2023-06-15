@@ -25,17 +25,30 @@ export function BuscarIndividual(setmovies, setmovie, buscarP){
         query: buscarkey,
       },
     });
-    //console.log(results)
+    // console.log(results)
     setmovies(results);
     setmovie(results[0]);
   };
+
+  //  const fetchMovie = async(id) =>{
+  //   const type = id ? "find" : "discover";
+  //   const {data} = await axios.get(`${API_KEY}/${type}/movie/385687`,{
+  //     params: {
+  //        api_key:API_KEY,
+  //        query: id}
+  //   })
+  //   console.log(data)
+  //  }
+
+
 
   if(buscarP !== undefined){
     fetchMovies(buscarP) 
   }else{
     fetchMovies() 
   }
-
+ 
+  // fetchMovie()
 
     
 

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
 export const EquipoCard = ({
+  id,
   original_title,
   overview,
   popularity,
@@ -23,6 +24,9 @@ export const EquipoCard = ({
           <p>{popularity}</p>
           <p>{release_date}</p>
         </div>
+        <Link className="btn btn-primary"  to={`/Movie/${ id }`}>
+                            Mas...
+        </Link>
       </div>
     </>
   )

@@ -1,6 +1,7 @@
-import { Home } from "../pages";
+import { Home, PagePelicula } from "../pages";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Navbar } from "../../ui/components/Navbar";
+import {} from 'module';
 import "../styles/styles.css";
 import { useEffect, useState } from "react";
 
@@ -13,6 +14,7 @@ const [buscarPeli, setbuscarPelicula] = useState()
       <Routes>
         <Route path="Home" element={<Home buscarPeli={buscarPeli}  />} />
         <Route path="/*" element={<Navigate to="Home" />} />
+        <Route path="Movie/:movieId" element={<PagePelicula/>}/>
         <Route />
       </Routes>
     </>
