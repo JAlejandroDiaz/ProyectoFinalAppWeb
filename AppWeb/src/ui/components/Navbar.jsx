@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { useAuth } from "../../context/AuthContect";
+import { useAuth } from "../../auth/context/AuthContect";
 import { Home } from "../../peliculas/pages/home";
 
 export const Navbar = ({setbuscarP}) => {
 
   const buscar= () =>{
-    console.log(pB)
+    
     setbuscarP(pB)
   }
   const [pB, setPB]= useState("") 
-
+   
   
 
     const auth = useAuth()

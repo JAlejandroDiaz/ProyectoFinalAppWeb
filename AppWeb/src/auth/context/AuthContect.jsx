@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {auth} from '../firebase/firebase.confing'
+import {auth} from '../../firebase/firebase.confing'
 import { createContext, useContext } from 'react'
 import { createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
@@ -11,12 +11,12 @@ import { createUserWithEmailAndPassword,
 
 
 export const authContext = createContext()
-console.log(authContext)
+//console.log(authContext)
 export const useAuth= () => {
     const context = useContext(authContext)
-    console.log(context)
+    //console.log(context)
     if(!context){
-        console.log("error al crear el context")
+       // console.log("error al crear el context")
     }
     return context
     }
@@ -26,12 +26,12 @@ export const useAuth= () => {
         useEffect(()=>{
             const suscribed = onAuthStateChanged(auth, (currentUser)=>{
                 if(!currentUser){
-                    console.log(currentUser)
-                    console.log("no hay usuario suscrito")
+                    //console.log(currentUser)
+                    //console.log("no hay usuario suscrito")
                     setUser("")
                 }else{
-                    console.log(currentUser)
-                    console.log("estoy registrado")
+                    //console.log(currentUser)
+                    //console.log("estoy registrado")
 
                    setUser(currentUser) 
                 }
@@ -41,16 +41,16 @@ export const useAuth= () => {
 
         const register = async(email,password) =>{
           const response= await createUserWithEmailAndPassword(auth,email,password)
-          console.log(response)
+          //console.log(response)
         }
         const login = async (email, password) =>{
             const response= await signInWithEmailAndPassword(auth,email,password)
-            console.log(response+"login")
+            //console.log(response+"login")
         }
 
         const loginWithGoogle = async()=>{
              const responseGoogle= new GoogleAuthProvider()
-            console.log(auth)
+            //console.log(auth)
 
              return signInWithPopup(auth, responseGoogle)
              
@@ -58,7 +58,7 @@ export const useAuth= () => {
 
         const logout = async() =>{
             const response = await signOut(auth)
-            console.log(response)
+            //console.log(response)
         }
 
 

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useAuth } from "../../context/AuthContect"
+import { useAuth } from "../context/AuthContect"
 export const FormSinUp = () => {
     const auth = useAuth()
     const [emailRegister, setEmailRegister] = useState("")

@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useAuth, authContext } from "../../context/AuthContect";
+import { useAuth, authContext } from "../context/AuthContect";
 import { useNavigate } from "react-router-dom";
 
 export const FormLogin = () => {
@@ -18,11 +18,11 @@ export const FormLogin = () => {
   }
 
   const { displayName } = auth.user;
-  console.log(displayName);
+  //console.log(displayName);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(email, password, "FromLogin");
+ // console.log(email, password, "FromLogin");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ export const FormLogin = () => {
   const handleGoogle = (e) => {
     e.preventDefault();
     auth.loginWithGoogle();
-    user();
+   
     login();
   };
 

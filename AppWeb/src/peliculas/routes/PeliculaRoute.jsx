@@ -1,25 +1,20 @@
-import { Home } from '../pages'
-import {Navigate, Route, Routes} from 'react-router-dom'
-import {Navbar}  from '../../ui/components/Navbar'
-import '../styles/styles.css'
+import { Home } from "../pages";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Navbar } from "../../ui/components/Navbar";
+import "../styles/styles.css";
+import { useEffect, useState } from "react";
 
 export const PeliculaRoute = () => {
+const [buscarPeli, setbuscarPelicula] = useState()
  
   return (
     <>
-
-    <div className="header">
-          <Navbar />   
-    </div>
-       
-
-    <Routes>
-        <Route path='Home' element={<Home />}/>
-        <Route path='/*' element={<Navigate to="Home"/>}/>
-        <Route/>
-    </Routes>
+      <Navbar setbuscarP={setbuscarPelicula}/>
+      <Routes>
+        <Route path="Home" element={<Home buscarPeli={buscarPeli}  />} />
+        <Route path="/*" element={<Navigate to="Home" />} />
+        <Route />
+      </Routes>
     </>
-     
-    
-  )
-}
+  );
+};
