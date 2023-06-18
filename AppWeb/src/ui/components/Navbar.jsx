@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useAuth } from "../../auth/context/AuthContect";
 import { Home } from "../../peliculas/pages/home";
+import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 export const Navbar = ({setbuscarP}) => {
-
+const navigate = useNavigate()
   const buscar= () =>{
-    
     setbuscarP(pB)
+    navigate("Home")
   }
   const [pB, setPB]= useState("") 
    
