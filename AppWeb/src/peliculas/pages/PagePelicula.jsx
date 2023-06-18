@@ -33,8 +33,13 @@ export const PagePelicula = () => {
         <div className="container">
           <div className="grid-container">
             <div className="grid-item column1">
-              <h1>Columna 1</h1>
-              <p>Contenido de la primera columna</p>
+              <div className=" " style={{ width: "24rem" }}>
+                <img
+                  src={`${URL_IMAGEN}/${movie.poster_path}`}
+                  className="card-img  rounded-4 "
+                  alt="..."
+                />
+              </div>
             </div>
             <div className="grid-item column2">
               <h1>Columna 2</h1>
