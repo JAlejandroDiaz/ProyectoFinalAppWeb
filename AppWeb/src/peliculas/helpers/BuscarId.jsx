@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const BuscarId = (id , setmovie) => {
+export const BuscarId = (id , setmovie, setgenero) => {
   console.log(id)
     const options = {
         method: 'GET',
@@ -13,7 +13,8 @@ export const BuscarId = (id , setmovie) => {
       fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options)
         .then(response => response.json())
         .then(response =>{ //console.log(response)
-                 setmovie(response)})
+                 setmovie(response)
+                setgenero(response.genres)})
         .catch(err => console.error(err));
 
 
