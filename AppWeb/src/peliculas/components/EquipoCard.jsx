@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-
+import {PagePelicula} from "../pages/PagePelicula"
 export const EquipoCard = ({
   id,
   original_title,
@@ -27,6 +27,10 @@ export const EquipoCard = ({
         <Link className="btn btn-primary"  to={`/Movie/${ id }`}>
                             Mas...
         </Link>
+       
+
+
+
       </div>
     </>
   )

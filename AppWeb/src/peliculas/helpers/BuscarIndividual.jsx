@@ -17,6 +17,7 @@ export function BuscarIndividual(setmovies, setmovie, buscarP){
   const fetchMovies = async (buscarkey) => {
    // console.log(buscarkey)
     const type = buscarkey ? "search" : "discover";
+    
     const {
       data: { results },
     } = await axios.get(`${API_URL}/${type}/movie`, {
@@ -25,22 +26,15 @@ export function BuscarIndividual(setmovies, setmovie, buscarP){
         query: buscarkey,
       },
     });
+    
     // console.log(results)
     setmovies(results);
     setmovie(results[0]);
   };
-
-  //  const fetchMovie = async(id) =>{
-  //   const type = id ? "find" : "discover";
-  //   const {data} = await axios.get(`${API_KEY}/${type}/movie/385687`,{
-  //     params: {
-  //        api_key:API_KEY,
-  //        query: id}
-  //   })
-  //   console.log(data)
-  //  }
+  
 
 
+ 
 
   if(buscarP !== undefined){
     fetchMovies(buscarP) 

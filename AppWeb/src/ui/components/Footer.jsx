@@ -5,7 +5,7 @@ export const Footer = () => {
     <>
    
 <footer className="text-center text-lg-start bg-light text-muted">
-<div class="container p-4">
+<div className="container p-4">
     
     <div className="row">
       

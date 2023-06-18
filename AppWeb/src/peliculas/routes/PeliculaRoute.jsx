@@ -8,6 +8,10 @@ import { Footer } from "../../ui/components/Footer";
 
 export const PeliculaRoute = () => {
 const [buscarPeli, setbuscarPelicula] = useState()
+
+
+
+
  
   return (
     <>
@@ -15,10 +19,13 @@ const [buscarPeli, setbuscarPelicula] = useState()
       <Routes>
         <Route path="Home" element={<Home buscarPeli={buscarPeli}  />} />
         <Route path="/*" element={<Navigate to="Home" />} />
-        <Route path="Movie/:movieId" element={<PagePelicula/>}/>
+        <Route path="Movie/:movieId" element={<PagePelicula />}/>
         <Route />
       </Routes>
+      <div className="footerContainer">
       <Footer/>
+      </div>
+     
     </>
   );
 };
