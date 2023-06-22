@@ -4,19 +4,14 @@ import { BuscarId } from "../../peliculas/helpers/BuscarId";
 //import { firebase } from "../../firebase/firebase.confing";
 import { db  } from '../../firebase/firebase.confing';
 import "./Style.css";
-//Esto es solo para mostarar un puto nombre by jaima
-import { useAuth, authContext } from "../../auth/context/AuthContect";
-
-
 export const PagePelicula = () => {
   const { movieId } = useParams();
   const [movie, setmovie] = useState("");
   const [genero, setgenero] = useState([])
   const [ListaLinks, setListaLinks] = useState([])
   const URL_IMAGEN = "https://image.tmdb.org/t/p/original";
-  const auth = useAuth();
-  const Nombre= auth.FuncionNombre()
- console.log(Nombre)
+
+ 
 useEffect(()=>{
   const ensayo = async () => {
     try {

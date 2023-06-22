@@ -3,7 +3,9 @@ import { useAuth } from "../../auth/context/AuthContect";
 import { Home } from "../../peliculas/pages/home";
 import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
+
 export const Navbar = ({setbuscarP}) => {
+  const { user } = useAuth()
 const navigate = useNavigate()
   const buscar= () =>{
     setbuscarP(pB)
@@ -24,7 +26,7 @@ const navigate = useNavigate()
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a className="navbar-brand" href="#">Hidden brand</a>
+        <a className="navbar-brand" href="#">{user.displayName}</a>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
             <Link className="nav-link active" aria-current="page" to="/Home">Home</Link>
