@@ -109,9 +109,35 @@ useEffect(()=>{
             }
             </div>
           </div>
+          
+
+
+
+
+
+
+
         </div>
         
       </div>
+
+      <div className="container mt-3 ">
+      <div className="comment-box">
+      <hr />
+    {/* Espacio para un fururo map */}
+    
+
+
+
+    
+     <hr />
+    </div>
+
+    </div>
+
+
+
+
     </>
   );
 };

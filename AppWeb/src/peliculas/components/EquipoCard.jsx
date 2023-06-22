@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import {PagePelicula} from "../pages/PagePelicula"
+import './Style.css'
+
 export const EquipoCard = ({
   id,
   original_title,
@@ -13,25 +15,26 @@ export const EquipoCard = ({
   const URL_IMAGEN = "https://image.tmdb.org/t/p/original";
   return (
     <>
-  
-      <div className="card">
+  <Link to={`/Movie/${id}`}>
+      <div className="mt-3  "  >
         <div className="card-image">
-          <img src={`${URL_IMAGEN +poster_path}` } />
-          <span className="card-content">{original_title}</span>
-          <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">{vote_average}</i></a>
-        </div>
-        <div className="card-content">
+          <div className="image-overlay">
+          <div className="card-content">
+            <span className="card-content titulo">{original_title}</span>
+            
           <p>{popularity}</p>
-          <p>{release_date}</p>
+          <p>Fecha: {release_date}</p>
+            <i >{vote_average}</i>
+          
         </div>
-        <Link className="btn btn-primary"  to={`/Movie/${ id }`}>
-                            Mas...
-        </Link>
-       
-
-
-
+            
+          </div>
+          <img className="card-img  rounded-3 "  src={`${URL_IMAGEN + poster_path}`} alt={original_title} />
+          
+        </div>
+      
       </div>
+    </Link>
     </>
   )
 }
