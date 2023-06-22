@@ -6,6 +6,8 @@ export { PeliculaRoute } from "../routes/PeliculaRoute"
 import { Navbar } from "../../ui/components/Navbar";
 import { PeliculaRoute } from ".";
 import './Style.css'
+
+
 export const Home = ({buscarPeli}) => {
   // const API_URL = "https://api.themoviedb.org/3";
   // const API_KEY = "8bac5a6f224724e60995c6b33cf11019";

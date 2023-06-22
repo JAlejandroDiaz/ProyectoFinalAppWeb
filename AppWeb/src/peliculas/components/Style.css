@@ -5,10 +5,9 @@
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: end;
-    justify-content: left; 
+    align-items: center ;
+    justify-content: center; 
     color: white;
-    font-size: 18px;
     font-weight: bold;
     font-size: 0.8em;
   
@@ -16,7 +15,15 @@
 
   .image-overlay:hover {
     background-color: rgba(0, 0, 0, 0.6); 
-    display: block;
+   }
+
+
+   .image-overlay:hover .play {
+    opacity: 1;
+   }
+
+  .icono:hover{
+    color: red;
   }
   
   .card-image {
@@ -30,7 +37,17 @@
     
   }
 
+  .play{
+  opacity: 0;
+  font-size: 5em;
+display: flex;
+ align-items: center;
+ justify-content: center;
+  }
+
   .titulo{
+    font-size: 1.3em;
+    display: flex;
     align-items: center;
-    font-size: 1.0em;
+    justify-content: center;
   }
