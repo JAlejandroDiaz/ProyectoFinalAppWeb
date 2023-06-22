@@ -3,7 +3,7 @@ import { useAuth, authContext } from "../context/AuthContect";
 import { useNavigate } from "react-router-dom";
 
 export const FormLogin = () => {
-  const { user } = useContext(authContext);
+  const { user} = useContext(authContext);
   const navigate = useNavigate();
   const auth = useAuth();
 
@@ -17,8 +17,13 @@ export const FormLogin = () => {
     // console.log("si hay algo")
   }
 
-  const { displayName } = auth.user;
-  //console.log(displayName);
+
+  
+  const { displayName } = auth.user
+  // console.log(displayName);
+  auth.FuncionNombre()
+
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
