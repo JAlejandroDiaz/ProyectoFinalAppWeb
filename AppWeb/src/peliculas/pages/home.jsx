@@ -20,17 +20,19 @@ export const Home = ({ buscarPeli, IDgenero }) => {
   const [movie, setmovie] = useState({
     tittle: "loadingMovie",
   });
-  const [idgenero, setidgenero] = useState(IDgenero || 0)
+  const [idgenero, setidgenero] = useState( 0)
   const [namegenero, setnamegenero] = useState()
   const [listgenero, setlisgenero] = useState([])
   useEffect(()=>{
+    console.log(IDgenero)
     Idgenero(setlisgenero);
   },[1])
 
 
-  // useEffect(() => {
-  //   setbuscarP(buscarPeli);
-  // }, [buscarPeli]);
+  useEffect(() => {
+    setbuscarP(buscarPeli);
+    setidgenero(IDgenero)
+  }, [buscarPeli, IDgenero]);
 
   useEffect(() => {
     if(idgenero !== 0){
@@ -40,7 +42,7 @@ export const Home = ({ buscarPeli, IDgenero }) => {
 
       BuscarIndividual(setmovies, setmovie, buscarP);
     }
-  }, [buscarP,IDgenero]);
+  }, [buscarP,idgenero]);
   
   return (
     <div className="body">

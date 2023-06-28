@@ -9,10 +9,6 @@ import { Footer } from "../../ui/components/Footer";
 export const PeliculaRoute = () => {
 const [buscarPeli, setbuscarPelicula] = useState()
 const [idgenero, setidgenero] = useState()
-
-
-
-
  
   return (
     <>
