@@ -4,7 +4,7 @@ import { Home } from "../../peliculas/pages/home";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Idgenero } from "../../peliculas/helpers/GetidGeneros";
-
+import "./styleNV.css";
 
 export const Navbar = ({ setbuscarP, setGenero }) => {
   const { user } = useAuth();
@@ -27,7 +27,7 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
   }, [1]);
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -41,19 +41,28 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <i className="fi fi-rr-user"></i>
-          <label className="nav-link active" aria-current="page" to="/Home">
+          <label
+            className="nav-link active text-light"
+            id="nameUsuario"
+            aria-current="page"
+            to="/Home"
+          >
             {user.displayName}
           </label>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/Home">
+              <Link
+                className="nav-link active my-1 mx-1"
+                id="home"
+                aria-current="page"
+                to="/Home"
+              >
                 Home
               </Link>
             </li>
-            <li className="nav-item col-1 mx-2">
+            <li className="nav-item col-1 mx-2 my-2">
               <button
-                className="btn btn-outline-secondary dropdown-toggle "
+                className="btn btn-outline-light dropdown-toggle"
                 type="button"
                 id="genero"
                 name="genero"
@@ -67,7 +76,7 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
                   {listgenero.map((val) => {
                     return (
                       <li
-                        className="dropdown-item"
+                        className="dropdown-item my-10"
                         key={val.id}
                         onClick={() => {
                           setGenero(val.id);
@@ -95,14 +104,14 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success mx-2" onClick={buscar}>
+            <button className="btn btn-outline-light mx-2" onClick={buscar}>
               Search
             </button>
           </div>
 
           <button
             onClick={() => handleLogout()}
-            className="btn btn-outline-success"
+            className="btn btn-outline-light"
           >
             Cerrar sesion
           </button>
