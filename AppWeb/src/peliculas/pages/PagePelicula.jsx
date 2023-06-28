@@ -213,7 +213,7 @@ export const PagePelicula = () => {
             <div className="col-4">
               
               {genero.length > 0 ? (<>
-                <h3>{genero[0].name}</h3>
+              <h3>{genero[0].name}</h3>
                 <Carrusel key={genero[0].id} idgenero={genero[0].id} />
                 </>) : undefined}
             </div>
