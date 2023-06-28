@@ -14,12 +14,12 @@ export const AppRouter = () => {
     <Routes>
         {user? <>
           <Route path='/*' element={<PeliculaRoute/>}/>
-          <Route path='/' element={<Navigate to='/*'/>}/>
+          <Route path='/*' element={<Navigate to='/*'/>}/>
         </>:
         <>
           <Route path='login' element={<Login/>}/>
           <Route path='SingUp' element={<SingUp/>}/>
-          <Route path='/*' element={<Navigate to='/login'/>}/>
+          <Route path='/' element={<Navigate to='/login'/>}/>
         </>}
       
       {/* Rutas propias de la app 

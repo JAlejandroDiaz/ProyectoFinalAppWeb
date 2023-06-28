@@ -12,6 +12,9 @@ const navigate = useNavigate()
     navigate("Home")
   }
   const [pB, setPB]= useState("") 
+  const [idgenero, setidgenero] = useState(0)
+  const [namegenero, setnamegenero] = useState()
+  const [listgenero, setlisgenero] = useState([])
    
   
 
@@ -26,13 +29,38 @@ const navigate = useNavigate()
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a className="navbar-brand" href="#">{user.displayName}</a>
+      <Link className="nav-link active" aria-current="page" to="/Home">{user.displayName}</Link>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
             <Link className="nav-link active" aria-current="page" to="/Home">Home</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
+            <button
+        className="btn btn-outline-secondary dropdown-toggle col-2"
+        type="button"
+        id="genero"
+        name="genero"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        genero
+         {namegenero} 
+      </button>
+      {
+      <ul className="dropdown-menu">
+        {
+          listgenero.map((val)=>{
+            return(<li className="dropdown-item" key={val.id}
+            onClick={()=>{
+              setidgenero(val.id)
+              setnamegenero(val.name)
+            }}>
+                {val.name}
+           </li>)
+          }) 
+        }
+        
+      </ul>}
           </li>
           <li className="nav-item">
             <a className="nav-link disabled">Disabled</a>
