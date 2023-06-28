@@ -75,7 +75,7 @@ export const PagePelicula = () => {
 
 
 
-  }, [1]);
+  }, [selectMenu]);
 
   useEffect(() => {
     BuscarId(movieId, setmovie, setgenero);
@@ -215,7 +215,7 @@ export const PagePelicula = () => {
 
                   ) : (
                     <>
-                      <Crearcomentario Usuario={user.displayName} NombrePelicula={movieId}/>
+                      <Crearcomentario Usuario={user.displayName} NombrePelicula={movieId} selectMenu={setselectMenu}/>
                     </>
                   )}
                 </div>
