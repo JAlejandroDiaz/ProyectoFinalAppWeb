@@ -8,6 +8,7 @@ import { Footer } from "../../ui/components/Footer";
 
 export const PeliculaRoute = () => {
 const [buscarPeli, setbuscarPelicula] = useState()
+const [idgenero, setidgenero] = useState()
 
 
 
@@ -15,9 +16,9 @@ const [buscarPeli, setbuscarPelicula] = useState()
  
   return (
     <>
-      <Navbar setbuscarP={setbuscarPelicula}/>
+      <Navbar setbuscarP={setbuscarPelicula} setGenero={setidgenero}/>
       <Routes>
-        <Route path="Home" element={<Home buscarPeli={buscarPeli}  />} />
+        <Route path="Home" element={<Home buscarPeli={buscarPeli} IDgenero={idgenero} />} />
         <Route path="/*" element={<Navigate to="Home" />} />
         <Route path="Movie/:movieId" element={<PagePelicula />}/>
         <Route />

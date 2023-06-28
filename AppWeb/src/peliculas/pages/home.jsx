@@ -10,7 +10,7 @@ import { buscarGenero } from "../helpers/buscarporgenero";
 import { Idgenero } from "../helpers/GetidGeneros";
 
 
-export const Home = ({ buscarPeli }) => {
+export const Home = ({ buscarPeli, IDgenero }) => {
   // const API_URL = "https://api.themoviedb.org/3";
   // const API_KEY = "8bac5a6f224724e60995c6b33cf11019";
   // const Imagen_path = "https://image.tmdb.org/t/p/original";
@@ -20,40 +20,17 @@ export const Home = ({ buscarPeli }) => {
   const [movie, setmovie] = useState({
     tittle: "loadingMovie",
   });
-  const [idgenero, setidgenero] = useState(0)
+  const [idgenero, setidgenero] = useState(IDgenero || 0)
   const [namegenero, setnamegenero] = useState()
   const [listgenero, setlisgenero] = useState([])
   useEffect(()=>{
     Idgenero(setlisgenero);
-    
-    
   },[1])
 
-  // const [playing, setplaying] = useState(false);
 
-  // //conexion
-  // const fetchMovies = async (buscarkey) => {
-  //   const type = buscarkey ? "search" : "discover";
-  //   const {
-  //     data: { results },
-  //   } = await axios.get(`${API_URL}/${type}/movie`, {
-  //     params: {
-  //       api_key: API_KEY,
-  //       query: buscarkey,
-  //     },
-  //   });
-  //   console.log(results)
-  //   setmovies(results);
-  //   setmovie(results[0]);
-  // };
-
-  //  if(buscarPeli.buscarPeli !== undefined){
-  //   setbuscarP(buscarPeli.buscarPeli)
-  //   setbuscarPelicula(undefined)
-  //  }
-  useEffect(() => {
-    setbuscarP(buscarPeli);
-  }, [buscarPeli]);
+  // useEffect(() => {
+  //   setbuscarP(buscarPeli);
+  // }, [buscarPeli]);
 
   useEffect(() => {
     if(idgenero !== 0){
@@ -63,11 +40,11 @@ export const Home = ({ buscarPeli }) => {
 
       BuscarIndividual(setmovies, setmovie, buscarP);
     }
-  }, [buscarP,idgenero]);
+  }, [buscarP,IDgenero]);
   
   return (
     <div className="body">
-      <button
+      {/* <button
         className="btn btn-outline-secondary dropdown-toggle col-2"
         type="button"
         id="genero"
@@ -91,7 +68,7 @@ export const Home = ({ buscarPeli }) => {
           }) 
         }
         
-      </ul>}
+      </ul>} */}
 
       {/* <button onClick={nav}>Presione</button>    */}
       {/* {<Navbar setbuscarP={setbuscarP}/>} */}
