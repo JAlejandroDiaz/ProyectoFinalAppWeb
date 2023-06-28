@@ -6,6 +6,14 @@ import { db } from "../../firebase/firebase.confing";
 import "./Style.css";
 import { Crearcomentario } from "./Crearcomentario";
 import { Comentarios } from "./Comentarios";
+//NOmbre Usuario
+import { useAuth } from "../../auth/context/AuthContect";
+
+
+
+
+
+
 export const PagePelicula = () => {
   const { movieId } = useParams();
   const [movie, setmovie] = useState("");
@@ -14,13 +22,19 @@ export const PagePelicula = () => {
   const [ListaComentarios, setListaComentarios] = useState([]);
   const URL_IMAGEN = "https://image.tmdb.org/t/p/original";
   const [selectMenu, setselectMenu] = useState(false);
+ 
+ 
+  const {user}=useAuth()
+
+
+
 
   useEffect(() => {
     const ensayo = async () => {
       try {
         const docRef = db.collection("Peliculas").doc(movieId);
         const doc = await docRef.get();
-       
+
         if (doc.exists) {
           const data = doc.data();
           // console.log(data);
@@ -39,28 +53,28 @@ export const PagePelicula = () => {
       }
     };
     ensayo();
-    const comentario = async () =>{
-      
-        const docRef = db.collection("Comments");
-        docRef.where("id_pel", "==", movieId).get().then(function(querySnapshot) {
-          const listaComentario=[]
-          querySnapshot.forEach(function(doc) {
-            listaComentario.push(doc.data())
-          }
-          )
-          setListaComentarios(listaComentario)
-         
+    const comentario = async () => {
+
+      const docRef = db.collection("Comments");
+      docRef.where("id_pel", "==", movieId).get().then(function (querySnapshot) {
+        const listaComentario = []
+        querySnapshot.forEach(function (doc) {
+          listaComentario.push(doc.data())
+        }
+        )
+        setListaComentarios(listaComentario)
+
           ;
-        }).catch(function(error) {
-          console.log("Error al obtener los datos: ", error);
-        })
-       
+      }).catch(function (error) {
+        console.log("Error al obtener los datos: ", error);
+      })
+
     }
     comentario()
-    
-   
-    
-    
+
+
+
+
   }, [1]);
 
   useEffect(() => {
@@ -169,42 +183,49 @@ export const PagePelicula = () => {
           </div>
         </div>
       </div>
-      {selectMenu === false ? (
-        <>
-          <div
-            style={{
-              width: "100%",
-              overflow: "auto",
-              maxHeight: "300px",
-              overflowY: "scroll",
-            }}
-          >
-            <div className="container ">
-              <div className="row">
-                <div className="col-12">
-                  <div className="card">
+
+      <>
+        <div
+          style={{
+            width: "100%",
+            overflow: "auto",
+            maxHeight: "300px",
+            overflowY: "scroll",
+          }}
+        >
+          <div className="container ">
+            <div className="row">
+              <div className="col-12">
+                <div className="card">
+
+                  {selectMenu === false ? (
+                    <>
+                   
                     {
-                      
-                      ListaComentarios.map((val, i)=>{
-                       return(
-                        <Fragment key={i}>
-                        <Comentarios {...val}/>
-                        </Fragment>  
-                       )
+
+                      ListaComentarios.map((val, i) => {
+                        return (
+                          <Fragment key={i}>
+                            <Comentarios {...val} />
+                          </Fragment>
+                        )
                       })
                     }
-                  </div>
+                    </>
+
+                  ) : (
+                    <>
+                      <Crearcomentario Usuario={user.displayName} NombrePelicula={movieId}/>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-         
-        </>
-      ):(
-        <>
-          <Crearcomentario />
-        </>
-      )}
+        </div>
+
+      </>
+
     </>
   );
 };
