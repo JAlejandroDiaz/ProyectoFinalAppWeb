@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { BuscarId } from "../../peliculas/helpers/BuscarId";
 //import { firebase } from "../../firebase/firebase.confing";
@@ -20,9 +20,10 @@ export const PagePelicula = () => {
       try {
         const docRef = db.collection("Peliculas").doc(movieId);
         const doc = await docRef.get();
+       
         if (doc.exists) {
           const data = doc.data();
-          //console.log(data.pelicula);
+          // console.log(data);
           setListaLinks(Object.values(data));
           // if (data.hasOwnProperty("pelicula") && data.pelicula.hasOwnProperty("link1") && data.pelicula.link1) {
           //   const link1 = data.pelicula.link1;
@@ -39,23 +40,27 @@ export const PagePelicula = () => {
     };
     ensayo();
     const comentario = async () =>{
-      try {
-        const docRef = db.collection("Comments").doc(movieId);
-        const doc = await docRef.get();
-        console.log(doc)
-        if (doc.exists) {
-          const data = doc.data();
-          console.log(data);
-          setListaComentarios(Object.values(data));
-          
-        } else {
-          console.log("Este dato no existe!");
-        }
-      } catch (error) {
-        console.log("Error al obtener el documento:", error);
-      }
+      
+        const docRef = db.collection("Comments");
+        docRef.where("id_pel", "==", movieId).get().then(function(querySnapshot) {
+          const listaComentario=[]
+          querySnapshot.forEach(function(doc) {
+            listaComentario.push(doc.data())
+          }
+          )
+          setListaComentarios(listaComentario)
+         
+          ;
+        }).catch(function(error) {
+          console.log("Error al obtener los datos: ", error);
+        })
+       
     }
     comentario()
+    
+   
+    
+    
   }, [1]);
 
   useEffect(() => {
@@ -178,15 +183,24 @@ export const PagePelicula = () => {
               <div className="row">
                 <div className="col-12">
                   <div className="card">
-                    
+                    {
+                      
+                      ListaComentarios.map((val, i)=>{
+                       return(
+                        <Fragment key={i}>
+                        <Comentarios {...val}/>
+                        </Fragment>  
+                       )
+                      })
+                    }
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <Comentarios />
+         
         </>
-      ) : (
+      ):(
         <>
           <Crearcomentario />
         </>
