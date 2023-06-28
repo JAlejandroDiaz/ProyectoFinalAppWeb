@@ -8,11 +8,7 @@ import { Crearcomentario } from "./Crearcomentario";
 import { Comentarios } from "./Comentarios";
 //NOmbre Usuario
 import { useAuth } from "../../auth/context/AuthContect";
-
-
-
-
-
+import { Carrusel } from "../components/Carrusel";
 
 export const PagePelicula = () => {
   const { movieId } = useParams();
@@ -22,14 +18,31 @@ export const PagePelicula = () => {
   const [ListaComentarios, setListaComentarios] = useState([]);
   const URL_IMAGEN = "https://image.tmdb.org/t/p/original";
   const [selectMenu, setselectMenu] = useState(false);
- 
- 
-  const {user}=useAuth()
 
-
-
+  const { user } = useAuth();
 
   useEffect(() => {
+    const comentario = async () => {
+      const docRef = db.collection("Comments");
+      docRef
+        .where("id_pel", "==", movieId)
+        .get()
+        .then(function (querySnapshot) {
+          const listaComentario = [];
+          querySnapshot.forEach(function (doc) {
+            listaComentario.push(doc.data());
+          });
+          setListaComentarios(listaComentario);
+        })
+        .catch(function (error) {
+          console.log("Error al obtener los datos: ", error);
+        });
+    };
+    comentario();
+  }, [selectMenu]);
+
+  useEffect(() => {
+    BuscarId(movieId, setmovie, setgenero);
     const ensayo = async () => {
       try {
         const docRef = db.collection("Peliculas").doc(movieId);
@@ -53,33 +66,7 @@ export const PagePelicula = () => {
       }
     };
     ensayo();
-    const comentario = async () => {
-
-      const docRef = db.collection("Comments");
-      docRef.where("id_pel", "==", movieId).get().then(function (querySnapshot) {
-        const listaComentario = []
-        querySnapshot.forEach(function (doc) {
-          listaComentario.push(doc.data())
-        }
-        )
-        setListaComentarios(listaComentario)
-
-          ;
-      }).catch(function (error) {
-        console.log("Error al obtener los datos: ", error);
-      })
-
-    }
-    comentario()
-
-
-
-
-  }, [selectMenu]);
-
-  useEffect(() => {
-    BuscarId(movieId, setmovie, setgenero);
-  }, [movieId]);
+  }, [1]);
   // console.log(movieId)
   // console.log(movie);
 
@@ -197,25 +184,23 @@ export const PagePelicula = () => {
             <div className="row">
               <div className="col-12">
                 <div className="card">
-
                   {selectMenu === false ? (
                     <>
-                   
-                    {
-
-                      ListaComentarios.map((val, i) => {
+                      {ListaComentarios.map((val, i) => {
                         return (
                           <Fragment key={i}>
                             <Comentarios {...val} />
                           </Fragment>
-                        )
-                      })
-                    }
+                        );
+                      })}
                     </>
-
                   ) : (
                     <>
-                      <Crearcomentario Usuario={user.displayName} NombrePelicula={movieId} selectMenu={setselectMenu}/>
+                      <Crearcomentario
+                        Usuario={user.displayName}
+                        NombrePelicula={movieId}
+                        selectMenu={setselectMenu}
+                      />
                     </>
                   )}
                 </div>
@@ -223,9 +208,32 @@ export const PagePelicula = () => {
             </div>
           </div>
         </div>
-
+        <div className="container my-3 d-flex justify-content-center ">
+          <div className="row">
+            <div className="col-4">
+              
+              {genero.length > 0 ? (<>
+                <h3>{genero[0].name}</h3>
+                <Carrusel key={genero[0].id} idgenero={genero[0].id} />
+                </>) : undefined}
+            </div>
+            <div className="col-4">
+             
+              {genero.length > 0 ? (<>
+                <h3>{genero[1].name}</h3>
+                <Carrusel key={genero[1].id} idgenero={genero[1].id} />
+                </>) : undefined}
+            </div>
+            <div className="col-4">
+             
+              {genero.length > 0 ? (<>
+                <h3>{genero[2].name}</h3>
+                <Carrusel key={genero[2].id}idgenero={genero[2].id} />
+                </>) : undefined}
+            </div>
+          </div>
+        </div>
       </>
-
     </>
   );
 };
