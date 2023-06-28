@@ -8,7 +8,7 @@ import { Crearcomentario } from "./Crearcomentario";
 import { Comentarios } from "./Comentarios";
 //NOmbre Usuario
 import { useAuth } from "../../auth/context/AuthContect";
-
+import "./Style.css";
 
 
 
@@ -99,7 +99,9 @@ export const PagePelicula = () => {
 
   return (
     <>
-      <div style={containerStyle}>
+
+    <div className="body">
+      <div style={containerStyle} >
         <div className="container">
           <div className="grid-container">
             <div className="grid-item column1">
@@ -157,7 +159,7 @@ export const PagePelicula = () => {
         </div>
       </div>
 
-      <div className="container mt-3 mb-5 ">
+      <div className="mt-3 mb-5 ">
         <div className="comment-box">
           <div className="row">
             <div className="col-6 d-flex justify-content-center ">
@@ -196,7 +198,7 @@ export const PagePelicula = () => {
           <div className="container ">
             <div className="row">
               <div className="col-12">
-                <div className="card">
+                <div className="card bg-dark text-white">
 
                   {selectMenu === false ? (
                     <>
@@ -225,7 +227,8 @@ export const PagePelicula = () => {
         </div>
 
       </>
-
+      </div>
     </>
+
   );
 };

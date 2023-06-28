@@ -5,6 +5,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Idgenero } from "../../peliculas/helpers/GetidGeneros";
 
+
 export const Navbar = ({ setbuscarP, setGenero }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -40,9 +41,10 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <Link className="nav-link active" aria-current="page" to="/Home">
+        <i className="fi fi-rr-user"></i>
+          <label className="nav-link active" aria-current="page" to="/Home">
             {user.displayName}
-          </Link>
+          </label>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/Home">
