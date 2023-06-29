@@ -9,14 +9,14 @@ import "./styleNV.css";
 export const Navbar = ({ setbuscarP, setGenero }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const buscar = () => {
-    setbuscarP(pB);
-    navigate("Home");
-  };
   const [pB, setPB] = useState("");
   const [idgenero, setidgenero] = useState(0);
   const [namegenero, setnamegenero] = useState("generos");
   const [listgenero, setlisgenero] = useState([]);
+  const buscar = () => {
+    setbuscarP(pB);
+    navigate("Home");
+  };
 
   const auth = useAuth();
   const handleLogout = () => {
@@ -27,7 +27,7 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
   }, [1]);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -55,7 +55,13 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
                 className="nav-link active my-1 mx-1"
                 id="home"
                 aria-current="page"
+                onClick={()=>{
+                  setPB("")
+                  setGenero(undefined)
+                  buscar()
+                }}
                 to="/Home"
+                
               >
                 Home
               </Link>
@@ -81,6 +87,7 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
                         onClick={() => {
                           setGenero(val.id);
                           setnamegenero(val.name);
+                          navigate("Home");
                         }}
                       >
                         {val.name}
@@ -103,6 +110,7 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              defaultValue={pB}
             />
             <button className="btn btn-outline-light mx-2" onClick={buscar}>
               Search
