@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { buscarGenero } from "../helpers/buscarporgenero";
+import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
 
 export const Carrusel = ({ idgenero }) => {
   const [movies, setmovies] = useState([]);
   const [id, setid] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (idgenero !== id) {
@@ -13,11 +15,17 @@ export const Carrusel = ({ idgenero }) => {
   }, [idgenero, id]);
 
   const URL_IMAGEN = "https://image.tmdb.org/t/p/original";
+  const handleRedirect = (id) => {
+    navigate(`/Movie/${id}`);
+  };
 
   return (
     <>
       {movies.length !== 0 ? (
-        <div id={`carouselExampleCaptions-${idgenero}`} className="carousel slide h-100 w-100">
+        <div
+          id={`carouselExampleCaptions-${idgenero}`}
+          className="carousel slide h-100 w-100"
+        >
           <div className="carousel-indicators">
             {movies.map((movie, index) => (
               <button
@@ -37,12 +45,16 @@ export const Carrusel = ({ idgenero }) => {
                 key={index}
                 className={`carousel-item ${index === 0 ? "active" : ""}`}
               >
-                <img
-                  src={`${URL_IMAGEN + movie.poster_path}`}
-                  className="d-block w-100"
-                  alt="..."
-                />
-                <div className="carousel-caption d-none d-md-block"></div>
+                <button
+                  onClick={() => handleRedirect(movie.id)}
+                >
+                  <img
+                    src={`${URL_IMAGEN + movie.poster_path}`}
+                    className="d-block w-100"
+                    alt="..."
+                  />
+                  <div className="carousel-caption d-none d-md-block"></div>
+                </button>
               </div>
             ))}
           </div>

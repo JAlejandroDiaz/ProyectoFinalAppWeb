@@ -8,22 +8,21 @@ import { Footer } from "../../ui/components/Footer";
 import { Login } from "../../auth/pages";
 
 export const PeliculaRoute = () => {
-const [buscarPeli, setbuscarPelicula] = useState()
-const [idgenero, setidgenero] = useState()
- 
+  const [buscarPeli, setbuscarPelicula] = useState();
+  const [idgenero, setidgenero] = useState();
+
   return (
     <>
-      <Navbar setbuscarP={setbuscarPelicula} setGenero={setidgenero}/>
+      <Navbar setbuscarP={setbuscarPelicula} setGenero={setidgenero} />
       <Routes>
-        <Route path="Home" element={<Home buscarPeli={buscarPeli} IDgenero={idgenero} />} />
-        {/* <Route path="/*" element={<Navigate to="Home" />} /> */}
-        <Route path="Movie/:movieId" element={<PagePelicula />}/>
-        <Route />
+        <Route path="/Home" element={<Home buscarPeli={buscarPeli} IDgenero={idgenero} />} />
+        <Route path="/Movie/:movieId" element={<PagePelicula />} />
+        {/* <Route path="*" element={<Navigate to="/" />} /> */}
       </Routes>
       <div className="footerContainer">
-      <Footer/>
+        <Footer />
       </div>
-     
     </>
   );
 };
+

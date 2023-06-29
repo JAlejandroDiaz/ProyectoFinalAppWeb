@@ -21,6 +21,9 @@ export const PagePelicula = () => {
   const [selectMenu, setselectMenu] = useState(false);
 
   const { user } = useAuth();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [movieId]);
 
   useEffect(() => {
     const comentario = async () => {
@@ -67,7 +70,7 @@ export const PagePelicula = () => {
       }
     };
     ensayo();
-  }, [1]);
+  }, [movieId]);
   // console.log(movieId)
   // console.log(movie);
 
