@@ -2,6 +2,9 @@ import { useAuth, authContext } from "../context/AuthContect";
 import { useNavigate } from "react-router-dom";
 import { FechaLanzamineto } from "../../peliculas/helpers/FechaLanzamineto";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+
+
 export const FormSinUp = () => {
   const navigate = useNavigate();
   const auth = useAuth();
@@ -15,9 +18,31 @@ export const FormSinUp = () => {
         e.preventDefault()
         if(emailRegister !== "" && passwordRegister !== ""){
             auth.register(emailRegister, passwordRegister)
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 5000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+            
+            Toast.fire({
+              icon: 'success',
+              title: 'Signed in successfully'
+            })
             login()
+            
         }else{
-            alert("complete los campos")
+          Swal.fire({
+            title: 'Error',
+            text: "Ingrese los campos",
+            icon: 'warning',
+            timer: 1000,
+          })
         }
         
     }

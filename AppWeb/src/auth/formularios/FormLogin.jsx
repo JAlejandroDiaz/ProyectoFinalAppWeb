@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FechaLanzamineto } from "../../peliculas/helpers/FechaLanzamineto";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 export const FormLogin = () => {
   const { user } = useContext(authContext);
@@ -47,16 +48,58 @@ export const FormLogin = () => {
     if(email !== "" && password !== ""){
 
       auth.login(email, password);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Signed in successfully'
+      })
+      
+      
     }else{
-      alert("Complete los campos")
+      Swal.fire({
+        title: 'Error',
+        text: "Ingrese los campos",
+        icon: 'warning',
+        timer: 1000,
+      })
+      
+      
     }
   };
 
   const handleGoogle = (e) => {
     e.preventDefault();
-    auth.loginWithGoogle();
-
+   
     login();
+    auth.loginWithGoogle();
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: 'Signed in successfully'
+    })
+    
   };
 
   return (

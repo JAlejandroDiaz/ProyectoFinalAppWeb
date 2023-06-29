@@ -7,6 +7,7 @@ import { Idgenero } from "../../peliculas/helpers/GetidGeneros";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faUserSecret } from "@fortawesome/free-solid-svg-icons";
 import './styleNV.css';
+import Swal from 'sweetalert2';
 
 export const Navbar = ({ setbuscarP, setGenero }) => {
   const { user } = useAuth();
@@ -23,7 +24,15 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
   const auth = useAuth();
   const handleLogout = () => {
     auth.logout();
+    
     navigate("login")
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Hasta Pronto .',
+      showConfirmButton: false,
+      timer: 1500
+    })
   };
   useEffect(() => {
     Idgenero(setlisgenero);

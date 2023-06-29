@@ -1,6 +1,6 @@
 import { useState } from "react"
 import {db} from '../../firebase/firebase.confing'
-
+import Swal from 'sweetalert2';
 
 export const Crearcomentario = ({
   Usuario,
@@ -23,7 +23,13 @@ export const Crearcomentario = ({
     })
         .then(function(docRef) {
             selectMenu(false)
-            alert("Datos almacenados");
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Comentario Guardado ;)',
+              showConfirmButton: false,
+              timer: 1500
+            })
         })
         .catch(function(error) {
             alert("Error, los datos no pudieron ser guardados: " + error.message);
