@@ -9,8 +9,8 @@ export const Comentarios = ({
 }) => {
  
   return (
-    <div className=" mx-2 my-2">
-    <div className="card text-center">
+    <div className=" mx-2 my-2  ">
+    <div className="card text-center bg-dark text-light ">
       <div className="card-header">
         {nombreUsuario}
       </div>
@@ -20,7 +20,9 @@ export const Comentarios = ({
         <a href={url} className="btn btn-primary">seguir vínculo</a>
       </div>
       <div className="card-footer text-body-secondary">
+        <p className='text-light' >
         {fechaComemt.toDate().toLocaleString()}
+        </p>
       </div>
     </div>
     </div>

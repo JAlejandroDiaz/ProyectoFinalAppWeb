@@ -1,7 +1,6 @@
 import React from 'react'
 
 export const BuscarId = (id , setmovie, setgenero) => {
-  console.log(id)
     const options = {
         method: 'GET',
         headers: {

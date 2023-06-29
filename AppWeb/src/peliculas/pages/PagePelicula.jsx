@@ -9,6 +9,7 @@ import { Comentarios } from "./Comentarios";
 //NOmbre Usuario
 import { useAuth } from "../../auth/context/AuthContect";
 import { Carrusel } from "../components/Carrusel";
+import "./Style.css"
 
 export const PagePelicula = () => {
   const { movieId } = useParams();
@@ -85,7 +86,8 @@ export const PagePelicula = () => {
   };
 
   return (
-    <>
+    
+     <div className="body mb-5">
       <div style={containerStyle}>
         <div className="container">
           <div className="grid-container">
@@ -143,8 +145,8 @@ export const PagePelicula = () => {
           </div>
         </div>
       </div>
-
-      <div className="container mt-3 mb-5 ">
+     
+      <div className="container mt-5 mb-2 ">
         <div className="comment-box">
           <div className="row">
             <div className="col-6 d-flex justify-content-center ">
@@ -171,7 +173,7 @@ export const PagePelicula = () => {
         </div>
       </div>
 
-      <>
+      
         <div
           style={{
             width: "100%",
@@ -183,7 +185,7 @@ export const PagePelicula = () => {
           <div className="container ">
             <div className="row">
               <div className="col-12">
-                <div className="card">
+                <div className="card bg-dark text-ligth ">
                   {selectMenu === false ? (
                     <>
                       {ListaComentarios.map((val, i) => {
@@ -208,32 +210,44 @@ export const PagePelicula = () => {
             </div>
           </div>
         </div>
-        <div className="container my-3 d-flex justify-content-center ">
+        
+        <div className=" mx-5 my-5 d-flex justify-content-center text-light"><h2>Te puede interesar </h2></div>
+        <div className="container  d-flex justify-content-center text-light">
+         
           <div className="row">
-            <div className="col-4">
-              
-              {genero.length > 0 ? (<>
+            {/* <div className="col-4 mb-5"> */}
+              {
+                genero.map((gen)=>{
+                  return(
+                    <div className="col-4 mb-5" key={gen.id}>
+                      <h3>{gen.name}</h3>
+                      <Carrusel key={gen.id} idgenero={gen.id} />
+                    </div>
+                  )
+                })
+              }
+              {/* {genero.length > 0 ? (<>
               <h3>{genero[0].name}</h3>
                 <Carrusel key={genero[0].id} idgenero={genero[0].id} />
                 </>) : undefined}
             </div>
-            <div className="col-4">
+            <div className="col-4 mb-5">
              
-              {genero.length > 0 ? (<>
+              {genero.length > 1 ? (<>
                 <h3>{genero[1].name}</h3>
                 <Carrusel key={genero[1].id} idgenero={genero[1].id} />
                 </>) : undefined}
             </div>
-            <div className="col-4">
+            <div className="col-4 mb-5">
              
-              {genero.length > 0 ? (<>
+              {genero.length > 2 ? (<>
                 <h3>{genero[2].name}</h3>
                 <Carrusel key={genero[2].id}idgenero={genero[2].id} />
-                </>) : undefined}
-            </div>
+                </>) : undefined} */}
+            {/* </div> */}
           </div>
         </div>
-      </>
-    </>
+       </div>
+    
   );
 };

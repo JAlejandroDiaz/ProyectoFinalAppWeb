@@ -4,11 +4,7 @@ import { Home } from "../../peliculas/pages/home";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Idgenero } from "../../peliculas/helpers/GetidGeneros";
-
-import './styleNV.css'
-
 import "./styleNV.css";
-
 
 export const Navbar = ({ setbuscarP, setGenero }) => {
   const { user } = useAuth();
@@ -45,29 +41,22 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-
-          <label className="nav-link active text-light" id="nameUsuario" aria-current="page" to="/Home">
           <label
             className="nav-link active text-light"
             id="nameUsuario"
             aria-current="page"
             to="/Home"
           >
-
             {user.displayName}
           </label>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-
-              <Link className="nav-link active my-1 mx-1" id ="home"  aria-current="page" to="/Home">
-
               <Link
                 className="nav-link active my-1 mx-1"
                 id="home"
                 aria-current="page"
                 to="/Home"
               >
-
                 Home
               </Link>
             </li>
@@ -93,7 +82,7 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
                           setGenero(val.id);
                           setnamegenero(val.name);
                         }}
-                        >
+                      >
                         {val.name}
                       </li>
                     );
@@ -119,8 +108,6 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
               Search
             </button>
           </div>
-
-
 
           <button
             onClick={() => handleLogout()}

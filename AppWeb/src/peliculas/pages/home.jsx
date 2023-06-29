@@ -24,7 +24,7 @@ export const Home = ({ buscarPeli, IDgenero }) => {
   const [namegenero, setnamegenero] = useState()
   const [listgenero, setlisgenero] = useState([])
   useEffect(()=>{
-    console.log(IDgenero)
+   // console.log(IDgenero)
     Idgenero(setlisgenero);
   },[1])
 
@@ -45,35 +45,7 @@ export const Home = ({ buscarPeli, IDgenero }) => {
   }, [buscarP,idgenero]);
   
   return (
-    <div className="body">
-      {/* <button
-        className="btn btn-outline-secondary dropdown-toggle col-2"
-        type="button"
-        id="genero"
-        name="genero"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        {namegenero}
-      </button>
-      {
-      <ul className="dropdown-menu">
-        {
-          listgenero.map((val)=>{
-            return(<li className="dropdown-item" key={val.id}
-            onClick={()=>{
-              setidgenero(val.id)
-              setnamegenero(val.name)
-            }}>
-                {val.name}
-           </li>)
-          }) 
-        }
-        
-      </ul>} */}
-
-      {/* <button onClick={nav}>Presione</button>    */}
-      {/* {<Navbar setbuscarP={setbuscarP}/>} */}
+    <div className="body  mt-5">
       <div className="container mt-3 ">
         <div className="row">
           {movies.map((movie) => {
