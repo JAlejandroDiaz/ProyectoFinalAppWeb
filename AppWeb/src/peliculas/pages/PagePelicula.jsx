@@ -123,7 +123,7 @@ export const PagePelicula = () => {
                 return (
                   <div key={val.id_pel}>
                     <a
-                      className="btn btn-primary"
+                      className="btn btn-dark border-white mx-2 my-2"
                       onClick={() => {
                         window.open(val.link1, "-blank");
                       }}
@@ -131,7 +131,7 @@ export const PagePelicula = () => {
                       opcion #1
                     </a>
                     <a
-                      className="btn btn-warning"
+                      className="btn btn-light border-black mx-2 my-2"
                       onClick={() => {
                         window.open(val.link2, "-blank");
                       }}
@@ -151,7 +151,7 @@ export const PagePelicula = () => {
           <div className="row">
             <div className="col-6 d-flex justify-content-center ">
               <button
-                className="btn btn-warning"
+                className="btn btn-dark border-white my-1"
                 onClick={() => {
                   setselectMenu(false);
                 }}
@@ -161,7 +161,7 @@ export const PagePelicula = () => {
             </div>
             <div className="col-6 d-flex justify-content-center">
               <button
-                className="btn btn-primary"
+                className="btn btn-light border-black my-1"
                 onClick={() => {
                   setselectMenu(true);
                 }}
