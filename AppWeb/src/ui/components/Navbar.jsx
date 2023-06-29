@@ -23,6 +23,7 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
   const auth = useAuth();
   const handleLogout = () => {
     auth.logout();
+    navigate("login")
   };
   useEffect(() => {
     Idgenero(setlisgenero);
@@ -49,7 +50,13 @@ export const Navbar = ({ setbuscarP, setGenero }) => {
           </label>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active my-1 mx-1 marginLeft" id="home" aria-current="page" to="/Home">
+              <Link className="nav-link active my-1 mx-1 marginLeft" id="home" aria-current="page" to="/Home"
+              onClick={()=>{
+                setGenero(undefined)
+                setbuscarP(undefined)
+                setnamegenero("generos")
+                
+              }}>
                 <FontAwesomeIcon icon={faHome} />
               </Link>
             </li>

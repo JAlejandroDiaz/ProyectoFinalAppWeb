@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-export function BuscarIndividual(setmovies, setmovie, buscarP){
+export function BuscarIndividual(setmovies, setmovie, buscarP, page){
   
   const API_URL = "https://api.themoviedb.org/3";
   const API_KEY = "8bac5a6f224724e60995c6b33cf11019";
@@ -12,7 +12,7 @@ export function BuscarIndividual(setmovies, setmovie, buscarP){
   // const [buscarkey, setbuscarkey] = useState("");
   // const [playing, setplaying] = useState(false);
   
-  //console.log(buscarP)
+  //console.log(page)
   //conexion
   const fetchMovies = async (buscarkey) => {
    // console.log(buscarkey)
@@ -24,10 +24,11 @@ export function BuscarIndividual(setmovies, setmovie, buscarP){
       params: {
         api_key: API_KEY,
         query: buscarkey,
+        page: page
       },
     });
     
-    // console.log(results)
+     //console.log(results)
     setmovies(results);
     setmovie(results[0]);
   };
